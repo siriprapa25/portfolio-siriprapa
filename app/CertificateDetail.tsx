@@ -1,4 +1,4 @@
-import Header from "../components/Header";
+import Image from "next/image";
 
 export default function CertificateDetail() {
   const certificates = [
@@ -6,25 +6,30 @@ export default function CertificateDetail() {
   ];
 
   return (
-    <div>
-      <Header />
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white p-6">
+      <h1 className="text-3xl font-bold text-blue-700 text-center mb-8">
+        เกียรติบัตรของฉัน
+      </h1>
 
-      <main className="max-w-5xl mx-auto p-6 space-y-6">
-        <h1 className="text-2xl font-bold text-blue-700">เกียรติบัตร</h1>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {certificates.map((cert) => (
-            <div key={cert.id} className="border rounded-lg p-2 shadow-sm">
-              <img 
-                src={cert.img} 
-                alt={cert.name} 
-                className="w-full rounded-lg"
-              />
-              <p className="text-center mt-2 font-semibold">{cert.name}</p>
-            </div>
-          ))}
-        </div>
-      </main>
+      <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        {certificates.map((cert) => (
+          <div
+            key={cert.id}
+            className="bg-white p-4 rounded-xl shadow-md border border-blue-100 hover:shadow-xl transition text-center"
+          >
+            <h2 className="text-xl font-semibold text-blue-600 mb-4">
+              {cert.name}
+            </h2>
+            <Image
+              src={cert.img}
+              alt={cert.name}
+              width={400}
+              height={300}
+              className="rounded-lg mx-auto shadow"
+            />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

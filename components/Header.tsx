@@ -9,7 +9,7 @@ export default function Header() {
         <nav className="space-x-6">
           <Link href="/" className="hover:text-yellow-300">หน้าแรก</Link>
           <Link href="/profile" className="hover:text-yellow-300">โปรไฟล์</Link>
-          <Link href="/certificate/CertificateDetail" className="hover:text-yellow-300">
+          <Link href="/CertificateDetail" className="hover:text-yellow-300">
             เกียรติบัตร
           </Link>
         </nav>
