@@ -1,70 +1,116 @@
+"use client";
+
 import Image from "next/image";
-import Header from "../components/Header";
+import { useRouter } from "next/navigation";
+import { ChevronDown } from "lucide-react";
+import { useState } from "react";
+import ChapterCard from "@/components/ChapterCard";
 
-export default function Profile() {
+export default function ProfilePage() {
+  const router = useRouter();
+  const [openMenu, setOpenMenu] = useState(false);
+
   return (
-    <div>
-      <Header />
+    <div className="min-h-screen bg-background">
+      {/* Header Area */}
+      <section className="relative py-16 md:py-24 overflow-hidden">
+        
+        {/* Background Blur Decorative */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -z-10" />
 
-      <main className="max-w-4xl mx-auto p-6 space-y-6">
-
-        {/* 🔵 รูปโปรไฟล์ */}
-        <div className="flex flex-col items-center">
+        <div className="container mx-auto px-4 text-center">
+          
+          {/* Profile Picture */}
           <Image
-            src="/profile.png"   // ← ใส่รูปที่อยู่ใน public/
-            alt="Profile Picture"
+            src="/profile.jpg"
+            alt="Profile Image"
             width={180}
             height={180}
-            className="rounded-full shadow-lg border-4 border-blue-500"
+            priority
+            className="rounded-full mx-auto shadow-xl object-cover border-4 border-primary/30"
           />
-          <h1 className="text-2xl font-bold text-blue-700 mt-4">
-            ข้อมูลส่วนตัว
+
+          {/* Name & Position */}
+          <h1 className="text-4xl font-bold text-foreground mt-6">
+            Siriprapa Horadee
           </h1>
+          <p className="text-lg text-foreground/70 mt-2">
+            Full Stack Developer • Designer
+          </p>
+
+          {/* Dropdown Menu */}
+          <div className="mt-6 relative inline-block">
+            
+            <button
+              onClick={() => setOpenMenu(!openMenu)}
+              className="px-6 py-3 rounded-xl bg-primary text-white font-medium flex items-center gap-2 shadow-md hover:shadow-lg transition"
+            >
+              Menu
+              <ChevronDown
+                className={`w-5 h-5 transition-transform ${
+                  openMenu ? "rotate-180" : ""
+                }`}
+              />
+            </button>
+
+            {openMenu && (
+              <div className="absolute left-0 w-full mt-2 bg-white rounded-xl shadow-lg border border-gray-200 z-30 overflow-hidden">
+                
+                <button
+                  onClick={() => {
+                    setOpenMenu(false);
+                    router.push("/profile");
+                  }}
+                  className="w-full text-left px-4 py-3 hover:bg-gray-100"
+                >
+                  ดูโปรไฟล์
+                </button>
+
+                <button
+                  onClick={() => {
+                    setOpenMenu(false);
+                    router.push("/certificates");
+                  }}
+                  className="w-full text-left px-4 py-3 hover:bg-gray-100"
+                >
+                  ดูเกียรติบัตร
+                </button>
+              </div>
+            )}
+          </div>
         </div>
+      </section>
 
-        {/* 🔵 ข้อมูลส่วนตัว */}
-        <section className="space-y-2">
-          <p><strong>ชื่อ :</strong> นางสาวศิริประภา หอระดี</p>
-          <p><strong>ชื่อเล่น :</strong> น้ำฝน</p>
-          <p><strong>อายุ :</strong> 20 ปี</p>
-          <p><strong>วันเกิด :</strong> 25 สิงหาคม 2548</p>
-          <p><strong>ที่อยู่ :</strong> 3/1 ม.3 ต.วังพร้าว อ.เกาะคา จ.ลำปาง 52130</p>
-        </section>
+      {/* Profile Content */}
+      <section className="py-16">
+        <div className="container mx-auto px-4 max-w-3xl space-y-6">
+          
+          <ChapterCard title="About Me" variant="highlight">
+            <p>
+              I am a passionate developer who enjoys building modern web
+              applications using React, Next.js, Tailwind CSS, and UI/UX
+              design. I love creating clean, minimal, and enjoyable user
+              experiences.
+            </p>
+          </ChapterCard>
 
-        {/* 🔵 การศึกษา */}
-        <h2 className="text-xl font-bold text-blue-700">ประวัติการศึกษา</h2>
-        <ul className="list-disc pl-6">
-          <li>มัธยมศึกษาตอนปลาย 2563-2566 | สายวิทย์-คณิต โรงเรียนเกาคาวิทยาคม</li>
-          <li>ปริญญาตรี2566-2568 | Information Technology</li>
-        </ul>
+          <ChapterCard title="Skills">
+            <ul className="list-disc pl-5 space-y-1">
+              <li>React / Next.js</li>
+              <li>Node.js / Express</li>
+              <li>UI/UX Design</li>
+              <li>Tailwind CSS</li>
+              <li>REST API / Firebase</li>
+            </ul>
+          </ChapterCard>
 
-        {/* 🔵 ทักษะภาษาโปรแกรม */}
-        <h2 className="text-xl font-bold text-blue-700">ทักษะด้านภาษาโปรแกรม</h2>
-        <ul className="list-disc pl-6">
-          <li>JavaScript / TypeScript</li>
-          <li>Python</li>
-          <li>HTML / CSS</li>
-          <li>My SQL</li>
-          <li>Node.js</li>
-        </ul>
+          <ChapterCard title="Education">
+            <p>Bachelor of Information Technology — Year 3</p>
+          </ChapterCard>
 
-        {/* 🔵 ทักษะโปรแกรม */}
-        <h2 className="text-xl font-bold text-blue-700">ทักษะด้านโปรแกรมคอมพิวเตอร์</h2>
-        <ul className="list-disc pl-6">
-          <li>VS Code</li>
-          <li>Figma</li>
-          <li>Git / GitHub</li>
-        </ul>
-
-        {/* 🔵 งานอดิเรก */}
-        <h2 className="text-xl font-bold text-blue-700">งานอดิเรก</h2>
-        <ul className="list-disc pl-6">
-          <li>วาดรูป</li>
-          <li>ถ่ายภาพ</li>
-          <li>ดูหนัง/ซีรีย์</li>
-        </ul>
-
-      </main>
+        </div>
+      </section>
     </div>
   );
 }
