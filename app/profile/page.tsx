@@ -36,54 +36,15 @@ export default function ProfilePage() {
             Siriprapa Horadee
           </h1>
           <p className="text-lg text-foreground/70 mt-2">
-            Full Stack Developer • Designer
+            Information Technology • IT
           </p>
 
-          {/* Dropdown Menu */}
-          <div className="mt-6 relative inline-block">
-            
-            <button
-              onClick={() => setOpenMenu(!openMenu)}
-              className="px-6 py-3 rounded-xl bg-primary text-white font-medium flex items-center gap-2 shadow-md hover:shadow-lg transition"
-            >
-              Menu
-              <ChevronDown
-                className={`w-5 h-5 transition-transform ${
-                  openMenu ? "rotate-180" : ""
-                }`}
-              />
-            </button>
 
-            {openMenu && (
-              <div className="absolute left-0 w-full mt-2 bg-white rounded-xl shadow-lg border border-gray-200 z-30 overflow-hidden">
-                
-                <button
-                  onClick={() => {
-                    setOpenMenu(false);
-                    router.push("/profile");
-                  }}
-                  className="w-full text-left px-4 py-3 hover:bg-gray-100"
-                >
-                  ดูโปรไฟล์
-                </button>
-
-                <button
-                  onClick={() => {
-                    setOpenMenu(false);
-                    router.push("/certificates");
-                  }}
-                  className="w-full text-left px-4 py-3 hover:bg-gray-100"
-                >
-                  ดูเกียรติบัตร
-                </button>
-              </div>
-            )}
-          </div>
         </div>
       </section>
 
       {/* Profile Content */}
-      <section className="py-16">
+      <section className="py-10">
         <div className="container mx-auto px-4 max-w-3xl space-y-6">
           
           <ChapterCard title="About Me" variant="highlight">
@@ -95,18 +56,30 @@ export default function ProfilePage() {
             </p>
           </ChapterCard>
 
+        {/* Skills */}
           <ChapterCard title="Skills">
-            <ul className="list-disc pl-5 space-y-1">
+            <ul className="pl-5 space-y-1">
               <li>React / Next.js</li>
               <li>Node.js / Express</li>
               <li>UI/UX Design</li>
               <li>Tailwind CSS</li>
-              <li>REST API / Firebase</li>
+              <li>Chat GPT</li>
             </ul>
           </ChapterCard>
 
+          {/* Education */}
           <ChapterCard title="Education">
-            <p>Bachelor of Information Technology — Year 3</p>
+          <p className="mt-4">
+                <strong>2563 - 2566</strong> | ระดับมัธยมศึกษาตอนปลาย  
+                สายวิทย์-คณิต โรงเรียนเกาะคาวิทยาคม  
+            </p>
+
+              <p className="mt-4">
+                <strong>2566 - 2567</strong> | ระดับปริญญาตรี  
+                Information Technology  
+                มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา ลำปาง  
+              </p>
+
           </ChapterCard>
 
         </div>

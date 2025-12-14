@@ -7,18 +7,18 @@ import ChapterCard from "@/components/ChapterCard";
 const certificates = [
   {
     id: 1,
-    title: "Web Development Certificate",
+    title: "การออกแบบประสบการณ์ผู้ใช้และส่วนติดต่อผู้ใช้",
     image: "/certificates/cert1.png",
   },
   {
     id: 2,
-    title: "Certificate",
+    title: "พลิกไอเดียธุรกิจ เส้นทางผู้ประกอบการยุคิจิทัล",
     image: "/certificates/cert2.png",
   },
   {
     id: 3,
-    title: "React Training Certificate",
-    image: "/certificates/cert3.jpg",
+    title: "MarTech Consultant to Enhance Lanna Craft Business",
+    image: "/certificates/cert3.png",
   },
 ];
 

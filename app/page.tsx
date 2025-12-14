@@ -30,16 +30,15 @@ export default function ProfilePage() {
           {/* Profile Info */}
           <div className="md:col-span-2">
             <h1 className="text-2xl font-bold mb-2">
-              นางสาวตัวอย่าง นักศึกษา
+              นางสาวศิริประภา หอระดี
             </h1>
-            <p><strong>ชื่อ :</strong> นางสาวศิริประภา หอระดี</p>
-          <p><strong>ชื่อเล่น :</strong> น้ำฝน</p>
-          <p><strong>อายุ :</strong> 20 ปี</p>
-          <p><strong>วันเกิด :</strong> 25 สิงหาคม 2548</p>
-          <p><strong>ที่อยู่ :</strong> 3/1 ม.3 ต.วังพร้าว อ.เกาะคา จ.ลำปาง 52130</p>
+          <p><strong>ชื่อเล่น </strong> น้ำฝน</p>
+          <p><strong>อายุ </strong> 20 ปี</p>
+          <p><strong>วันเกิด </strong> 25 สิงหาคม 2548</p>
+          <p><strong>ที่อยู่ </strong> 3/1 ม.3 ต.วังพร้าว อ.เกาะคา จ.ลำปาง 52130</p>
 
             <p className="text-gray-600 mb-4">
-              สาขาเทคโนโลยีสารสนเทศ | นักพัฒนาเว็บไซต์
+              สาขาเทคโนโลยีสารสนเทศ
             </p>
 
             <p className="text-gray-700 leading-relaxed mb-6">
@@ -49,12 +48,6 @@ export default function ProfilePage() {
 
             {/* Buttons */}
             <div className="flex flex-wrap gap-4">
-              <button
-                onClick={() => router.push("/profile")}
-                className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
-              >
-                หน้าโปรไฟล์
-              </button>
 
               <button
                 onClick={() => router.push("/certificates")}
@@ -83,7 +76,7 @@ export default function ProfilePage() {
 
         <div className="grid md:grid-cols-3 gap-6">
           <ChapterCard
-            title="certificate 1"
+            title="การออกแบบประสบการณ์ผู้ใช้และส่วนติดต่อผู้ใช้"
             description="ผ่านการอบรมด้านเทคโนโลยีสารสนเทศ"
             image="/certificates/cert1.png"
             onClick={() => router.push("/certificates")}
