@@ -1,75 +1,93 @@
 "use client";
 
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import Header from "@/components/Header";
 import ChapterCard from "@/components/ChapterCard";
 
 export default function ProfilePage() {
-  return (
-    <div className="min-h-screen bg-background">
-      {/* Header */}
-      <section className="relative py-16 md:py-24 overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl -z-10" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/10 rounded-full blur-3xl -z-10" />
+  const router = useRouter();
 
-        <div className="container mx-auto px-4">
-          <div className="max-w-3xl mx-auto text-center">
+  return (
+    <div className="min-h-screen bg-gray-50">
+      {/* Header */}
+      <Header />
+
+      {/* Profile Section */}
+      <section className="max-w-5xl mx-auto px-6 py-10">
+        <div className="bg-white rounded-2xl shadow-md p-8 grid md:grid-cols-3 gap-8">
+          {/* Profile Image */}
+          <div className="flex justify-center">
             <Image
               src="/profile.png"
               alt="Profile"
               width={180}
               height={180}
-              className="rounded-full mx-auto shadow-xl object-cover"
+              className="rounded-full object-cover"
             />
-
-            <h1 className="text-4xl font-bold text-foreground mt-6">
-              Siriprapa Horadee
-            </h1>
-            <p className="text-lg text-foreground/70 mt-2">
-              ศิริประภา หอระดี
-            </p>
           </div>
-        </div>
-      </section>
 
-      {/* Info Cards */}
-      <section className="py-1">
-        <div className="container mx-auto px-4 max-w-3xl space-y-6">
-
-          {/* About */}
-          <ChapterCard title="About Me" variant="highlight">
-          <p><strong>ชื่อ :</strong> นางสาวศิริประภา หอระดี</p>
+          {/* Profile Info */}
+          <div className="md:col-span-2">
+            <h1 className="text-2xl font-bold mb-2">
+              นางสาวตัวอย่าง นักศึกษา
+            </h1>
+            <p><strong>ชื่อ :</strong> นางสาวศิริประภา หอระดี</p>
           <p><strong>ชื่อเล่น :</strong> น้ำฝน</p>
           <p><strong>อายุ :</strong> 20 ปี</p>
           <p><strong>วันเกิด :</strong> 25 สิงหาคม 2548</p>
           <p><strong>ที่อยู่ :</strong> 3/1 ม.3 ต.วังพร้าว อ.เกาะคา จ.ลำปาง 52130</p>
-          </ChapterCard>
 
-          {/* Skills */}
-          <ChapterCard title="Skills">
-            <ul className="list-disc pl-5 space-y-1">
-              <li>React / Next.js</li>
-              <li>Node.js / Express</li>
-              <li>UI/UX Design</li>
-              <li>Tailwind CSS</li>
-              <li>Chat GPT</li>
-            </ul>
-          </ChapterCard>
-
-          {/* Education */}
-          <ChapterCard title="Education">
-          <p className="mt-2">
-                <strong>2563 - 2566</strong> | ระดับมัธยมศึกษาตอนปลาย  
-                สายวิทย์-คณิต โรงเรียนเกาะคาวิทยาคม  
+            <p className="text-gray-600 mb-4">
+              สาขาเทคโนโลยีสารสนเทศ | นักพัฒนาเว็บไซต์
             </p>
 
-              <p className="mt-4">
-                <strong>2566 - 2567</strong> | ระดับปริญญาตรี  
-                Information Technology  
-                มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา ลำปาง  
-              </p>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              สนใจการพัฒนาเว็บแอปพลิเคชันด้วย Next.js, React และ Tailwind CSS
+              รวมถึงการออกแบบระบบสารสนเทศและงานด้านเทคโนโลยีสารสนเทศ
+            </p>
 
-          </ChapterCard>
+            {/* Buttons */}
+            <div className="flex flex-wrap gap-4">
+              <button
+                onClick={() => router.push("/profile")}
+                className="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+              >
+                หน้าโปรไฟล์
+              </button>
 
+              <button
+                onClick={() => router.push("/certificates")}
+                className="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+              >
+                ใบเกียรติบัตร
+              </button>
+
+              <a
+                href="/cv.pdf"
+                download
+                className="px-5 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900"
+              >
+                ดาวน์โหลด CV
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certificates Preview */}
+      <section className="max-w-5xl mx-auto px-6 pb-12">
+        <h2 className="text-xl font-semibold mb-6">
+          ใบเกียรติบัตร
+        </h2>
+
+        <div className="grid md:grid-cols-3 gap-6">
+          <ChapterCard
+            title="certificate 1"
+            description="ผ่านการอบรมด้านเทคโนโลยีสารสนเทศ"
+            image="/certificates/cert1.png"
+            onClick={() => router.push("/certificates")}
+          />
         </div>
       </section>
     </div>

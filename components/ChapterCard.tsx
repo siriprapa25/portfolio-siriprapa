@@ -1,38 +1,59 @@
-"use client";
-/**
- * ChapterCard Component - Simple Version
- * Design: Warm Contemporary
- */
-
-import { ReactNode } from 'react';
+import Image from "next/image";
+import { ReactNode } from "react";
 
 interface ChapterCardProps {
   title: string;
-  children: ReactNode;
-  variant?: 'default' | 'highlight';
+  description?: string;
+  image?: string;
+  onClick?: () => void;
+  children?: ReactNode;
+  variant?: "default" | "highlight";
 }
 
 export default function ChapterCard({
   title,
+  description,
+  image,
+  onClick,
   children,
-  variant = 'default',
+  variant = "default",
 }: ChapterCardProps) {
-  const variantClasses = {
-    default: 'bg-card border-border hover:shadow-lg',
-    highlight:
-      'bg-gradient-to-br from-primary/10 to-accent/10 border-primary/30 hover:shadow-xl',
-  };
-
+  
   return (
     <div
-      className={`
-        rounded-2xl border p-6 transition-all duration-300
-        hover:scale-105 hover:-translate-y-1
-        ${variantClasses[variant]}
-      `}
+      onClick={onClick}
+      className={`group rounded-2xl cursor-pointer transition overflow-hidden
+        ${
+          variant === "highlight"
+            ? "bg-white shadow-lg border border-blue-200 p-6"
+            : "bg-white shadow-md hover:shadow-xl"
+        }`}
     >
-      <h3 className="text-xl font-bold text-foreground mb-4">{title}</h3>
-      <div className="text-foreground/80 leading-relaxed">
+      {/* Image (แสดงเฉพาะเมื่อมี image) */}
+      {image && (
+        <div className="overflow-hidden">
+          <Image
+            src={image}
+            alt={title}
+            width={400}
+            height={250}
+            className="group-hover:scale-105 transition duration-300 object-cover"
+          />
+        </div>
+      )}
+
+      <div className="p-5 text-center">
+        <h3 className="font-semibold text-lg text-gray-800 mb-1">
+          {title}
+        </h3>
+
+        {description && (
+          <p className="text-gray-600 text-sm mb-2">
+            {description}
+          </p>
+        )}
+
+        {/* รองรับ children */}
         {children}
       </div>
     </div>

@@ -23,7 +23,7 @@ export default function ProfilePage() {
           
           {/* Profile Picture */}
           <Image
-            src="/profile.jpg"
+            src="/profile.png"
             alt="Profile Image"
             width={180}
             height={180}
